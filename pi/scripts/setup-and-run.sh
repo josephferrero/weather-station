@@ -18,7 +18,7 @@ fi
 
 # ✅ Activate the virtual environment
 echo "🔗 Activating virtual environment..."
-source /venv/bin/activate
+source venv/bin/activate
 
 # ✅ Upgrade pip & install dependencies
 echo "📦 Installing Python dependencies..."
