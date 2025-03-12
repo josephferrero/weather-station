@@ -12,6 +12,7 @@ sensor = adafruit_bme680.Adafruit_BME680_I2C(i2c, address=0x77)
 
 # Configure sensor settings
 sensor.sea_level_pressure = 1013.25  # Adjust based on your location
+sensor.set_gas_heater(320, 150)
 
 def read_bme680():
     """Reads data from BME680 and returns as a dictionary."""
@@ -21,7 +22,7 @@ def read_bme680():
         "pressure": sensor.pressure,
         "gas_resistance": sensor.gas,
         "alt": sensor.altitude,
-    }
+        }
 
 if __name__ == "__main__":
     while True:
