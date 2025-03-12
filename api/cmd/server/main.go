@@ -12,7 +12,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	myFigure := figure.NewFigure("Weather API", "", true)
+	myFigure := figure.NewFigure("Weather Station API", "", true)
 	myFigure.Print()
 
 	mux.HandleFunc("/readings", handlers.HandleWeatherReading())
