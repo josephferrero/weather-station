@@ -1,9 +1,10 @@
 #!/bin/bash
 
 set -e  # Exit on error
-PROJECT_ROOT=$(dirname "$(realpath "$0")")  # Get the absolute path to `pi/`
+cd "$(dirname "$0")"  # Ensure the script runs from `pi/`
+PROJECT_ROOT=$(pwd)
 
-echo "🚀 Starting setup for Weather Station..."
+echo "🚀 Starting setup for Weather Station from $PROJECT_ROOT..."
 
 # ✅ 1. Install system dependencies
 echo "📦 Installing system dependencies..."
@@ -26,6 +27,6 @@ echo "📦 Installing Python dependencies..."
 pip install --upgrade pip
 pip install -r "$PROJECT_ROOT/requirements.txt"
 
-# ✅ 5. Run the weather station app
+# ✅ 5. Run the weather station app from the correct path
 echo "🌦️ Starting Weather Station..."
 python "$PROJECT_ROOT/src/main.py"
