@@ -19,6 +19,6 @@ def read_bme680():
         "temperature": sensor.temperature,
         "humidity": sensor.humidity,
         "pressure": sensor.pressure,
-        "gasRresistance": sensor.gas,
+        "gasResistance": sensor.gas,
         "alt": sensor.altitude,
         }
