@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package WeatherStation;
+
+option go_package = "github.com/josephferrero/weather-station/proto";
+
+service WeatherStationService {
+    rpc SendReading (WeatherStationReading) returns (ServerResponse);
+    rpc GetReading (GetReadingsRequest) returns (GetReadingsResponse);
+}
+
+message WeatherStationReading {
+    string timestamp = 1;
+    float temperature = 2;
+    float humidity = 3;
+    float pressure = 4;
+    float gas_resistance = 5;
+}
+
+message ServerResponse {
+    string message = 1;
+}
+
+message GetReadingsRequest {}
+
+message GetReadingsResponse {
+    repeated WeatherStationReading readings = 1;
+}
