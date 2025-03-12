@@ -12,7 +12,7 @@ python-venv:
 python-install: python-venv
 	@echo "Installing dependencies..."
 	$(VENV_DIR)/bin/pip install --upgrade pip
-	$(VENV_DIR)/bin/pip install -r pi/requirements.txt
+	$(VENV_DIR)/bin/pip install -r pi/scripts/requirements.txt
 	@echo "Dependencies installed."
 
 python-clean:
