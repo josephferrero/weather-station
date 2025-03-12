@@ -1,4 +1,3 @@
-import time
 import board
 import busio
 import adafruit_bme680
@@ -23,9 +22,3 @@ def read_bme680():
         "gas_resistance": sensor.gas,
         "alt": sensor.altitude,
         }
-
-if __name__ == "__main__":
-    while True:
-        data = read_bme680()
-        print(f"🌡️ Temp: {data['temperature']:.2f}°C, 💧 Humidity: {data['humidity']:.2f}%, ⬆️ Pressure: {data['pressure']:.2f} hPa, 🔥 Gas: {data['gas_resistance']:.2f} Ohms, Alt: {data['alt']:.2f}")
-        time.sleep(2)
