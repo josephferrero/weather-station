@@ -4,9 +4,9 @@ set -e  # Exit on error
 
 cd ..
 
-# ✅ Install system dependencies
-echo "📦 Installing system dependencies..."
-sudo apt update && sudo apt install -y python3-venv python3-pip python3-full
+# # ✅ Install system dependencies
+# echo "📦 Installing system dependencies..."
+# sudo apt update && sudo apt install -y python3-venv python3-pip python3-full
 
 # ✅ Create a virtual environment (if not exists)
 if [ ! -d "venv" ]; then
