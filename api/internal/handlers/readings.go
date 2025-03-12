@@ -25,10 +25,13 @@ func HandleWeatherReading() http.HandlerFunc {
 			logger.Info("Recieved a new sensor reading")
 			var reading WeatherReading
 			if err := json.NewDecoder(r.Body).Decode(&reading); err != nil {
+				logger.Error(err.Error())
 				http.Error(w, "Invalid input", http.StatusBadRequest)
 			}
 			reading.Timestamp = time.Now().Format(time.RFC3339)
 			readings = append(readings, reading)
+			w.WriteHeader(http.StatusCreated)
+			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]any{"message": "Reading stored"})
 			return
 		}
