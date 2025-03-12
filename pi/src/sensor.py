@@ -20,11 +20,11 @@ def read_bme680():
         "humidity": sensor.humidity,
         "pressure": sensor.pressure,
         "gas_resistance": sensor.gas,
-        "alt": sensor.altitude
+        "alt": sensor.altitude,
     }
 
 if __name__ == "__main__":
     while True:
         data = read_bme680()
-        print(f"🌡️ Temp: {data['temperature']:.2f}°C, 💧 Humidity: {data['humidity']:.2f}%, ⬆️ Pressure: {data['pressure']:.2f} hPa, 🔥 Gas: {data['gas_resistance']:.2f} Ohms")
+        print(f"🌡️ Temp: {data['temperature']:.2f}°C, 💧 Humidity: {data['humidity']:.2f}%, ⬆️ Pressure: {data['pressure']:.2f} hPa, 🔥 Gas: {data['gas_resistance']:.2f} Ohms, Alt: {data['alt']:.2f}")
         time.sleep(2)
