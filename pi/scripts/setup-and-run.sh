@@ -4,7 +4,7 @@ set -e  # Exit on error
 
 cd ..
 
-pwd
+echo $(pwd)
 
 # ✅ Install system dependencies
 echo "📦 Installing system dependencies..."
