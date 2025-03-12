@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -e  # Exit on error
+echo "📂 Current working directory: $(pwd)"
+ls -l src/  # List files inside src/
 cd "$(dirname "$0")"  # Ensure the script runs from `pi/`
 PROJECT_ROOT=$(pwd)
 
