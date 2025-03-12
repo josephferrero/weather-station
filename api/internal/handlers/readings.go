@@ -13,7 +13,7 @@ type WeatherReading struct {
 	Temperature   float64 `json:"temperature"`
 	Humidity      float64 `json:"humidity"`
 	Pressure      float64 `json:"pressure"`
-	GasResistance float64 `json:"gasResistance"`
+	GasResistance int     `json:"gasResistance"`
 }
 
 var readings []WeatherReading
