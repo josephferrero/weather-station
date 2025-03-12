@@ -4,7 +4,7 @@ import sensor
 
 def send_reading(data):
     data = sensor.read_bme680()
-    response = ""
+    response = {}
     try:
         response = requests.post(config.API_URL + "/readings", json=data, timeout=1.5)
     except requests.Timeout:
