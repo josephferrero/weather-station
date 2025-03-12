@@ -1,0 +1,8 @@
+{
+    "python.defaultInterpreterPath": "pi/venv/bin/python3",
+    "python.analysis.extraPaths": [
+        "pi/venv/lib/python3.13/site-packages"
+    ],
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.diagnosticMode": "workspace"
+}

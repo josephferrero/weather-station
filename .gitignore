@@ -1,1 +1,3 @@
 tmp
+*.img.xz
+/pi/venv
