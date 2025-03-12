@@ -31,7 +31,7 @@ source venv/bin/activate
 # ✅ Upgrade pip & install dependencies
 echo "📦 Installing Python dependencies..."
 $VENV_PIP install --upgrade pip
-$VENV_PIP install -r requirements.txt
+$VENV_PIP install -r scripts/requirements.txt
 
 # ✅ Run `main.py` using the correct Python
 if [ -f src/main.py ]; then
