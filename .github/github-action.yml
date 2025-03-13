@@ -1,0 +1,20 @@
+name: Commit Github Action
+run-name: ${{ github.actor }} commited to main
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and Push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: josephferrero/weather-station-api:latest
