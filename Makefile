@@ -1,6 +1,9 @@
 VENV_DIR := pi/venv
 PYTHON := python3
 
+dev-api:
+	docker compose -f api/docker/docker-compose.yaml -p weather-station-api up -d 
+
 rpi-image:
 	sudo ./pi/scripts/create-image.sh
 

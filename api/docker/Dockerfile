@@ -1,10 +1,10 @@
 FROM golang:latest
 
-WORKDIR /app
-
 RUN go install github.com/air-verse/air@latest
 
-COPY go.mod ./
+COPY go.mod go.sum ./
 RUN go mod download
+
+WORKDIR /tmp/
 
 CMD ["air", "-c", ".air.toml"]
