@@ -1,10 +1,9 @@
-FROM golang:latest
+FROM golang:1.24.1-alpine
 
-WORKDIR /app
+WORKDIR /go/src/api
 
-RUN go install github.com/air-verse/air@latest
+RUN apk update
 
-COPY go.mod ./
-RUN go mod download
+COPY ./ /go/src/api
 
-CMD ["air", "-c", ".air.toml"]
+RUN go build -o ./bin/server

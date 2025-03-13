@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"github.com/josephferrero/weather-station-api/internal/handlers"
 )
 
-func main() {
+func StartServer() {
 	mux := http.NewServeMux()
 
 	myFigure := figure.NewFigure("Weather Station API", "", true)
