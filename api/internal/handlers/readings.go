@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"io"
 	"net/http"
 	"time"
 
@@ -23,11 +22,6 @@ var readings []WeatherReading
 func HandleWeatherReading() http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		logger := logging.GetLogger(r.Context())
-		bytes, err := io.ReadAll(r.Body)
-		if err != nil {
-			logger.Sugar().Error(err)
-		}
-		logger.Debug(string(bytes))
 		if r.Method == http.MethodPost {
 			logger.Info("Recieved a new sensor reading")
 			var reading WeatherReading
