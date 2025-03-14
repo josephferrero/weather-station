@@ -1,6 +1,12 @@
 VENV_DIR := pi/venv
 PYTHON := python3
 
+.PHONY: create-migration
+create-migration:
+	goose -dir ./api/db/migrations create $(lastword $(MAKECMDGOALS)) sql
+%:
+	@:
+
 dev-api:
 	docker compose -f api/docker/docker-compose.yaml -p weather-station-api up -d 
 

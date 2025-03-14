@@ -8,5 +8,14 @@ services:
       - 3000:8080
     volumes:
       - ../:/app
+    env_file: ../.env
+    depends_on:
+      - postgres
   postgres:
-    
+    image: postgres:16-alpine
+    ports:
+      - 5430:5432
+    environment:
+      POSTGRES_USER: weather
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: weather_db

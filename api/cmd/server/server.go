@@ -6,16 +6,22 @@ import (
 	"net/http"
 
 	"github.com/common-nighthawk/go-figure"
+	"github.com/josephferrero/weather-station-api/config"
+	"github.com/josephferrero/weather-station-api/database"
 	"github.com/josephferrero/weather-station-api/internal/handlers"
 )
 
 func StartServer() {
+	database.RunMigrations()
+
 	myFigure := figure.NewFigure("Weather Station API", "", true)
 	myFigure.Print()
+
+	cfg := config.GetConfig()
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/readings", handlers.HandleWeatherReading())
 
-	fmt.Println("REST API running on port 8080...")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	fmt.Printf("REST API running on port %v...\n", cfg.HTTPPort)
+	log.Fatal(http.ListenAndServe(":"+cfg.HTTPPort, mux))
 }
