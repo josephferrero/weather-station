@@ -21,6 +21,6 @@ func RunMigrations() {
 	goose.SetBaseFS(migrations)
 
 	if err := goose.Up(db.DB, "migrations"); err != nil {
-		logger.Fatal(err.Error())
+		logger.Error(err.Error())
 	}
 }
