@@ -19,10 +19,21 @@ type WeatherReading struct {
 func InsertWeatherReading(ctx context.Context, wr *WeatherReading) error {
 	db := config.GetDB()
 
-	_, err := db.NewInsert().Model(wr).Exec(ctx)
-	if err != nil {
+	if _, err := db.NewInsert().Model(wr).Exec(ctx); err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func ListWeatherReadings(ctx context.Context) ([]*WeatherReading, error) {
+	db := config.GetDB()
+
+	wrs := make([]*WeatherReading, 0)
+
+	if err := db.NewSelect().Model(&wrs).Scan(ctx); err != nil {
+		return nil, err
+	}
+
+	return wrs, nil
 }

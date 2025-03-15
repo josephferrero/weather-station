@@ -22,23 +22,26 @@ func HandleWeatherReading() http.HandlerFunc {
 			reading.Timestamp = time.Now().Format(time.RFC3339)
 			if err := models.InsertWeatherReading(r.Context(), &reading); err != nil {
 				logger.Error(err.Error())
+				http.Error(w, "failed to insert weather readings", http.StatusInternalServerError)
 				w.WriteHeader(http.StatusInternalServerError)
 				return
 			}
-			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(map[string]any{"message": "Reading stored"})
 			return
 		}
-		// if r.Method == http.MethodGet {
-		// 	logger.Info("Responding with sensor readings")
-		// 	if r.Method != http.MethodGet {
-		// 		http.Error(w, "Invalid method", http.StatusBadRequest)
-		// 	}
-		// 	w.Header().Set("Content-Type", "application/json")
-		// 	json.NewEncoder(w).Encode(readings)
-		// 	return
-		// }
+		if r.Method == http.MethodGet {
+			logger.Info("Responding with sensor readings")
+			if r.Method != http.MethodGet {
+				http.Error(w, "Invalid method", http.StatusBadRequest)
+			}
+			readings, err := models.ListWeatherReadings(r.Context())
+			if err != nil {
+				logger.Error(err.Error())
+				http.Error(w, "failed to get weather readings", http.StatusInternalServerError)
+			}
+			json.NewEncoder(w).Encode(readings)
+			return
+		}
 		http.Error(w, "Unsupported method", http.StatusMethodNotAllowed)
 	})
-
 }

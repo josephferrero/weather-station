@@ -4,17 +4,16 @@ go 1.24.0
 
 require (
 	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
+	github.com/uptrace/bun v1.2.11
 	go.uber.org/zap v1.27.0
 )
 
 require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/mfridman/interpolate v0.0.2 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/sethvargo/go-retry v0.3.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
-	github.com/uptrace/bun v1.2.11 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	go.opentelemetry.io/otel v1.34.0 // indirect
@@ -26,7 +25,6 @@ require (
 )
 
 require (
-	github.com/pressly/goose v2.7.0+incompatible
 	github.com/pressly/goose/v3 v3.24.1
 	github.com/uptrace/bun/dialect/pgdialect v1.2.11
 	github.com/uptrace/bun/driver/pgdriver v1.2.11
