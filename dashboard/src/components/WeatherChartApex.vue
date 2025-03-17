@@ -85,7 +85,7 @@ const tempSeries = computed(() => [
   },
 ]);
 
-// Make tempSeries reactive using computed
+// Make gasResistanceSeries reactive using computed
 const gasResistanceSeries = computed(() => [
   {
     data:
@@ -95,14 +95,35 @@ const gasResistanceSeries = computed(() => [
       })) || [], // fallback to an empty array if no data
   },
 ]);
+
+// Make humiditySeries reactive using computed
+const humiditySeries = computed(() => [
+  {
+    data:
+      chartData.value?.humidity?.map((point) => ({
+        x: new Date(point.x).getTime(), // convert to milliseconds
+        y: point.y,
+      })) || [], // fallback to an empty array if no data
+  },
+]);
+
+// Make pressureSeries reactive using computed
+const pressureSeries = computed(() => [
+  {
+    data:
+      chartData.value?.pressure?.map((point) => ({
+        x: new Date(point.x).getTime(), // convert to milliseconds
+        y: point.y,
+      })) || [], // fallback to an empty array if no data
+  },
+]);
 </script>
 
 <template>
   <div>
-    <!-- Check if chartData has been loaded -->
     <div v-if="chartData && chartData.temperature.length">
       <VueApexCharts
-        type="line"
+        type="area"
         height="350"
         :options="chartOptions"
         :series="tempSeries"
@@ -112,6 +133,18 @@ const gasResistanceSeries = computed(() => [
         height="350"
         :options="chartOptions"
         :series="gasResistanceSeries"
+      />
+      <VueApexCharts
+        type="line"
+        height="350"
+        :options="chartOptions"
+        :series="humiditySeries"
+      />
+      <VueApexCharts
+        type="line"
+        height="350"
+        :options="chartOptions"
+        :series="pressureSeries"
       />
     </div>
     <div v-else>Loading data...</div>
