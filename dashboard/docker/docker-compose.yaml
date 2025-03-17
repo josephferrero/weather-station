@@ -1,0 +1,15 @@
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: pnpm run serve
+    working_dir: /app
+    ports:
+      - 8080
+    volumes:
+      - ../:/app
+networks:
+  default:
+    name: weather-infra
+    external: true
